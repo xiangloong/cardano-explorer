@@ -1,0 +1,68 @@
+cabal-version:          >= 1.10
+
+-- http://haskell.org/cabal/users-guide/
+
+name:                   jormungandr-explorer-node
+version:                0.1.0.0
+synopsis:               The DB node for the Jormungandr Block Explorer
+description:            A Cardano node that follows the Jormungandr chain and inserts data from the
+                        chain into a PostgresQL database.
+homepage:               https://github.com/input-output-hk/cardano-explorer
+bug-reports:            https://github.com/input-output-hk/cardano-explorer/issues
+license:                Apache-2.0
+license-file:           LICENSE
+author:                 IOHK Engineering Team
+maintainer:             operations@iohk.io
+copyright:              (c) 2019 IOHK
+category:               Cryptocurrency
+build-type:             Simple
+extra-source-files:     CHANGELOG.md
+
+library
+  default-language:     Haskell2010
+  hs-source-dirs:       src
+
+  ghc-options:          -Wall
+                        -Wcompat
+                        -fwarn-redundant-constraints
+                        -fwarn-incomplete-patterns
+                        -fwarn-unused-imports
+                        -Wincomplete-record-updates
+                        -Wincomplete-uni-patterns
+
+  exposed-modules:      Explorer.Node
+
+  -- other-modules:        Explorer.Node.Database
+  --                       Explorer.Node.Insert.Genesis
+  --                       Explorer.Node.Metrics
+  --                       Explorer.Node.Util
+  --                       Explorer.Node.Rollback
+
+  build-depends:        base                            >= 4.12         && < 4.13
+                      , base16-bytestring
+                      , bytestring
+                      , cardano-config
+                      , cardano-explorer-db
+                      , cardano-node
+                      , cardano-prelude
+                      , cardano-shell
+                      , cardano-wallet-jormungandr
+                      , cborg
+                      , containers
+                      , cryptonite
+                      , extra
+                      , formatting
+                      , io-sim-classes
+                      , iohk-monitoring
+                      , memory
+                      , monad-logger
+                      , optparse-applicative
+                      , network
+                      , persistent
+                      , prometheus
+                      , reflection
+                      , serialise
+                      , stm
+                      , text
+                      , time
+                      , transformers

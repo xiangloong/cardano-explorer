@@ -34,9 +34,16 @@
         cardano-explorer-db-test = ./cardano-explorer-db-test.nix;
         cardano-explorer-node = ./cardano-explorer-node.nix;
         cardano-explorer = ./cardano-explorer.nix;
+        jormungandr-explorer-node = ./jormungandr-explorer-node.nix;
         cardano-shell = ./cardano-shell.nix;
         cardano-prelude = ./cardano-prelude.nix;
         cardano-prelude-test = ./cardano-prelude-test.nix;
+        cardano-wallet-jormungandr = ./cardano-wallet-jormungandr.nix;
+        cardano-wallet-cli = ./cardano-wallet-cli.nix;
+        cardano-wallet-core = ./cardano-wallet-core.nix;
+        cardano-wallet-launcher = ./cardano-wallet-launcher.nix;
+        text-class = ./text-class.nix;
+        canonical-json = ./canonical-json.nix;
         cardano-sl-x509 = ./cardano-sl-x509.nix;
         contra-tracer = ./contra-tracer.nix;
         iohk-monitoring = ./iohk-monitoring.nix;

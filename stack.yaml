@@ -7,12 +7,14 @@ packages:
   - cardano-explorer-db/test
   - cardano-explorer-node
   - cardano-explorer
+  - jormungandr-explorer-node
 
 ghc-options:
   cardano-explorer-db:          -Wall -Werror -fwarn-redundant-constraints
   cardano-explorer-node:        -Wall -Werror -fwarn-redundant-constraints
 
 extra-deps:
+  - bech32-1.0.0@sha256:6bd23abe4a11d61a2d41fdb11db9e1361fc43c215cf2b8602cafaa516c8b6d76,2017
   - binary-0.8.7.0
   - bimap-0.4.0
   - brick-0.47.1
@@ -46,6 +48,21 @@ extra-deps:
       - .
       - test
 
+  - ../cardano-wallet/lib/jormungandr
+  - ../cardano-wallet/lib/cli
+  - ../cardano-wallet/lib/core
+  - ../cardano-wallet/lib/launcher
+  - ../cardano-wallet/lib/text-class
+
+  # - git: https://github.com/input-output-hk/cardano-wallet.git
+  #   commit: 52eb3191604ea607ca04f287bc6efe6407a2241b
+  #   subdirs:
+  #     - lib/jormungandr
+  #     - lib/cli
+  #     - lib/core
+  #     - lib/launcher
+  #     - lib/text-class
+
   - git: https://github.com/input-output-hk/cardano-sl-x509
     commit: 43a036c5bbe68ca2e9cbe611eab7982e2348fe49
 
@@ -61,7 +78,7 @@ extra-deps:
       - plugins/scribe-systemd
 
   - git: https://github.com/input-output-hk/cardano-node
-    commit: e1189d45bf3384aa6e6ba4f1ed829ca97d08b563
+    commit: dc3af18f7fda2161b7e6619894beafc8462f5266
     subdirs:
       - cardano-config
       - cardano-node
@@ -90,3 +107,12 @@ extra-deps:
       - ouroboros-consensus
       - typed-protocols
       - typed-protocols-cbor
+
+nix:
+  packages:
+    - zlib
+    - openssl
+    - postgresql
+    - pkg-config
+    - systemd
+    - sqlite
