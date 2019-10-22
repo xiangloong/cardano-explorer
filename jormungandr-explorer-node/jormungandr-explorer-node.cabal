@@ -10,7 +10,6 @@ description:            A Cardano node that follows the Jormungandr chain and in
 homepage:               https://github.com/input-output-hk/cardano-explorer
 bug-reports:            https://github.com/input-output-hk/cardano-explorer/issues
 license:                Apache-2.0
-license-file:           LICENSE
 author:                 IOHK Engineering Team
 maintainer:             operations@iohk.io
 copyright:              (c) 2019 IOHK
@@ -31,14 +30,18 @@ library
                         -Wincomplete-uni-patterns
 
   exposed-modules:      Explorer.Node
+                        Explorer.Node.Launch
 
-  -- other-modules:        Explorer.Node.Database
+  other-modules:        Explorer.Node.Insert
   --                       Explorer.Node.Insert.Genesis
-  --                       Explorer.Node.Metrics
-  --                       Explorer.Node.Util
-  --                       Explorer.Node.Rollback
+  --                       Explorer.Node.Insert.Genesis
+                        Explorer.Node.Metrics
+                        Explorer.Node.Util
+                        Explorer.Node.Rollback
 
   build-depends:        base                            >= 4.12         && < 4.13
+                      , aeson
+                      , aeson-qq
                       , base16-bytestring
                       , bytestring
                       , cardano-config
@@ -46,23 +49,41 @@ library
                       , cardano-node
                       , cardano-prelude
                       , cardano-shell
+                      , cardano-wallet-core
                       , cardano-wallet-jormungandr
                       , cborg
                       , containers
                       , cryptonite
+                      , directory
                       , extra
+                      , filepath
                       , formatting
                       , io-sim-classes
                       , iohk-monitoring
                       , memory
                       , monad-logger
-                      , optparse-applicative
                       , network
+                      , optparse-applicative
                       , persistent
+                      , process
                       , prometheus
                       , reflection
                       , serialise
                       , stm
+                      , temporary
                       , text
+                      , text-class
                       , time
                       , transformers
+                      , yaml
+
+executable jormungandr-explorer-node
+  default-language: Haskell2010
+  main-is:          Main.hs
+  build-depends:    base
+                  , cardano-wallet-core
+                  , cardano-wallet-jormungandr
+                  , process
+                  , jormungandr-explorer-node
+                  , iohk-monitoring
+                  , text-class
