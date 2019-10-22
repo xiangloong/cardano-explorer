@@ -39,8 +39,6 @@ import Cardano.Config.Types
     ccCore,
     coRequiresNetworkMagic,
   )
-import Cardano.Crypto (RequiresNetworkMagic (..), decodeAbstractHash)
-import Cardano.Crypto.Hashing (AbstractHash (..))
 import Cardano.Prelude hiding ((%), Nat, atomically, option)
 import Cardano.Shell.Lib (GeneralException (ConfigurationError))
 import Cardano.Shell.Types
@@ -86,12 +84,7 @@ data Peer = Peer SockAddr SockAddr deriving (Show)
 -- | The product type of all command line arguments
 data ExplorerNodeParams
   = ExplorerNodeParams
-      { enpLogging :: !LoggingCLIArguments,
-        enpGenesisHash :: !Text,
-        enpGenesisFile :: !GenesisFile,
-        enpSocketPath :: !SocketPath,
-        enpMigrationDir :: !MigrationDir,
-        enpCommonCLIAdvanced :: !Config.CommonCLIAdvanced
+      { backendConfiguration :: !J.JormungandrBackend
       }
 
 newtype GenesisFile

@@ -12,7 +12,7 @@ haskell.lib.buildStackProject {
   buildInputs =
     # Development libraries which may be necessary for the build.
     # TODO: Add remove libraries as necessary
-    [ zlib gmp ncurses lzma openssl git systemd.dev ] ++
+    [ zlib gmp ncurses lzma openssl git systemd.dev postgresql sqlite.dev pkgconfig ] ++
     # MacOS-specific librararies which may be necessary for the build.
     (lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ Cocoa CoreServices libcxx libiconv ])) ++
     # Add any programs/tools which are required for e.g. running tests.

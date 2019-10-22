@@ -27,6 +27,7 @@ extra-deps:
   - libsystemd-journal-1.4.4
   - persistent-2.10.0
   - persistent-postgresql-2.10.0
+  - persistent-sqlite-2.10.0
   - persistent-template-2.7.2
   - prometheus-2.1.2
   - pvss-0.2.0
@@ -36,6 +37,10 @@ extra-deps:
   - word-wrap-0.4.1
   - transformers-except-0.1.1
   - text-ansi-0.1.0
+
+  # cardano-crypto
+  - git: https://github.com/input-output-hk/cardano-crypto
+    commit: 3c5db489c71a4d70ee43f5f9b979fcde3c797f2a
 
   - git: https://github.com/input-output-hk/cardano-shell
     commit: 8abae427c44f0b447117f78e2c1f5006dac2edf8
@@ -109,10 +114,4 @@ extra-deps:
       - typed-protocols-cbor
 
 nix:
-  packages:
-    - zlib
-    - openssl
-    - postgresql
-    - pkg-config
-    - systemd
-    - sqlite
+  shell-file: nix/stack-shell.nix
