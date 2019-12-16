@@ -71,6 +71,16 @@ share
     txCount             Word64              sqltype=uinteger
     UniqueBlock         hash
 
+  -- The Epoch table is an aggregation of data in the 'Block' table, but is kept in this form
+  -- because having it as a 'VIEW' is incredibly slow and inefficient.
+  Epoch
+    outSum              Word64              sqltype=uinteger
+    txCount             Word64              sqltype=uinteger
+    no                  Word64              sqltype=uinteger
+    startTime           UTCTime             sqltype=timestamp
+    endTime             UTCTime             sqltype=timestamp
+    UniqueEpoch         no
+
   Tx
     hash                ByteString          sqltype=hash32type
     block               BlockId             -- This type is the primary key for the 'block' table.
